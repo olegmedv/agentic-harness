@@ -61,17 +61,22 @@ Add the URL above to your MCP client (Claude Desktop / Claude web / Grok / ChatG
 ### Example prompts
 
 ```
+List all courses.
+```
+
+```
 Add a French course with one lesson "Greetings" and three multiple-choice exercises:
   Hello → Bonjour, Thank you → Merci, Goodbye → Au revoir.
 Each with 3 plausible French distractors.
 ```
 
 ```
-List all lessons under "ʔayʔaǰuθəm — Basics" and tell me which have no exercises yet.
+Modify the French course — rename the "Greetings" lesson to "Basic Greetings"
+and add one more multiple-choice exercise: Good morning → Bonjour le matin.
 ```
 
 ```
-Rename the English lesson "Lesson 4" to "Greetings" and delete the exercise about past tense.
+Delete the French course.
 ```
 
 ### Screenshots
