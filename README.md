@@ -53,6 +53,8 @@ A working MCP server built on top of LinguaCMS (.NET 9 + ASP.NET Core, official 
 
 - **Endpoint:** `https://mcp.linguacms.twilightparadox.com/`
 - **App to see results:** `https://linguacms.twilightparadox.com/`
+<img width="602" height="654" alt="image" src="https://github.com/user-attachments/assets/b69d8f74-80a5-470a-9409-befdb19441b1" />
+
 
 **18 typed tools** — 4 Language CRUD, 4 Lesson CRUD, 7 strongly-typed `create_<exercise-type>` (one per ExerciseType), plus `list_exercises` / `update_exercise` / `delete_exercise`. The LLM physically cannot send malformed payloads — each tool has explicit JSON Schema for its required fields.
 
