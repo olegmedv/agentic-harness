@@ -85,6 +85,19 @@ Then replace `<Sln>` placeholders with your real solution prefix.
 - **Critic as independent persona**. Adversarial review by design, not "improve your own work".
 - **Failures drive harness improvements**. Each real-world miss becomes a new entry in the critic's known-mistakes library.
 
+## Regression tests for refactor-audit
+
+`skills/refactor-audit/tests/` contains 4 self-contained cases exercising core skill behaviors — each has a `CLAUDE.md`, a `project/` directory, and an `expected-plan.md`.
+
+| Case | Checks |
+|---|---|
+| `case-01-baseline` | Empty project doesn't crash; workflow rule lands in Out-of-audit-scope |
+| `case-02-stable-ids` | IDs preserved across re-runs; done items stay done (two-phase: initial audit on `project-v1/`, re-audit on `project-v2/` with existing `REFACTOR_PLAN-v1.md` as input) |
+| `case-03-workflow-classification` | Workflow rules land in Out-of-scope, not in Ambiguous |
+| `case-04-granularity` | Same rule + identical mechanical fix across N files → 1 item with N files in scope, deterministic across re-runs |
+
+**How to run a case**: copy the case's `CLAUDE.md` + `project/*` to a sandbox folder, open Claude Code there, invoke `/refactor-audit`, compare the generated `REFACTOR_PLAN.md` against `expected-plan.md`. Dates and exact wording may vary; structural fields (Items / Out-of-audit-scope / Ambiguous counts, item scope, IDs) should match. Use these to verify SKILL.md edits don't break existing behavior.
+
 ## Validated against
 
 - LinguaCMS — a .NET 9 + React 19 capstone project. Backend went from 22 audit items to 17 atomic commits (+ 5 superseded mergers), 15/15 architecture tests passing. Frontend: 16 items, ~7 commits, OpenAPI codegen pipeline introduced. Six audit passes verified stable IDs in production.
