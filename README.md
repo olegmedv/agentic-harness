@@ -44,8 +44,26 @@ Run: copy a case to a sandbox, open Claude Code, `/refactor-audit`, diff result 
 |---|---|
 | `dotnet-server/CLAUDE.md` | .NET 9 + ASP.NET Core + EF Core + MediatR + Clean Architecture, ~100 prescriptive lines |
 | `react-client/CLAUDE.md` | React 19 + Vite + TypeScript + Zustand + OpenAPI codegen, ~75 prescriptive lines |
+| `delphi-to-csharp/CLAUDE.md` | Delphi (VCL / FireMonkey) → .NET 9 REST API legacy migration: decomposition by `.pas` unit, Pascal↔C# idiom dictionary, differential testing as a quality gate, recovery playbook |
 
 Copy into your project's source folder, replace `<Sln>` with your namespace prefix.
+
+### Adapting to legacy migration scenarios
+
+The `delphi-to-csharp` template shows how the same four skills compose into a migration harness:
+
+1. **Decompose** — one `.pas` unit = one item in `migration/manifest.yaml`. `/refactor-audit` runs against the manifest; `/plan-feature` produces atomic sub-items per unit (e.g. "port `TUserService.Authenticate` → `LoginHandler`").
+2. **Context** — `CLAUDE.md` carries the Pascal↔C# idiom dictionary (`Variant`, `set of TEnum`, `TDateTime`, `with..do`, `try..except`, BDE/ADO/FireDAC → EF Core) so the agent stops fabricating mappings on unfamiliar constructs.
+3. **Quality gates** — `/execute-plan`'s standard 5 gates plus a **differential parity test** per migrated endpoint: same input → legacy + new in parallel, diff the response, fail on any mismatch not explicitly whitelisted.
+4. **Recovery** — `/critic-plan` catches HIGH-severity issues (global state, swallowed exceptions, `Variant` on API boundary) before execution. A sub-item failing the same gate twice gets split smaller and re-planned, not retry-looped. Irreducible parity diffs (timestamps, generated IDs) go into a `whitelist.yaml` with a per-entry rationale — never a global loosening of the test.
+
+The pattern generalizes to other legacy migrations (VB6, classic ASP, PHP-monolith → modern stack) — swap the idiom dictionary, keep the harness.
+
+### Tools I evaluated and integrate alongside
+
+- **[BMAD-METHOD](https://github.com/bmad-code-org/BMAD-METHOD)** (v6.7.1) — agentic planning framework. I used its PRD → Architecture → Epics → Sprint chain end-to-end to design the live MCP server below. Strong upstream planning; I keep my own skills for the downstream execution loop where I want tighter scope and explicit gate semantics.
+- **[Claude Code](https://docs.claude.com/en/docs/claude-code/overview)** — host. Skills, MCP clients, and slash commands all run inside it.
+- **[Model Context Protocol](https://modelcontextprotocol.io/)** — protocol I serve from the LinguaCMS backend (see below).
 
 ## Live MCP server
 
