@@ -81,7 +81,26 @@ Delete the French course.
 
 ### Screenshots
 
-_(to be added)_
+<img width="877" height="545" alt="image" src="https://github.com/user-attachments/assets/359a3762-53c3-45a2-8f3e-da1933a8565c" />
+
+<img width="677" height="456" alt="image" src="https://github.com/user-attachments/assets/d8d34652-6947-470b-8f9d-5a3806547f81" />
+
+<img width="951" height="556" alt="image" src="https://github.com/user-attachments/assets/637df5ce-1430-48d0-8971-316814f907fa" />
+
+<img width="659" height="654" alt="image" src="https://github.com/user-attachments/assets/199d97f5-2452-45e3-b793-2e754404ae84" />
+
+<img width="657" height="562" alt="image" src="https://github.com/user-attachments/assets/4f16016b-698f-49fe-a8c2-6415385010ee" />
+
+<img width="883" height="435" alt="image" src="https://github.com/user-attachments/assets/65f72c53-7678-46b4-b0de-ff89369f4342" />
+
+<img width="679" height="268" alt="image" src="https://github.com/user-attachments/assets/d1555f26-edaa-4b31-a5fe-380739885d81" />
+
+<img width="663" height="715" alt="image" src="https://github.com/user-attachments/assets/95aa0dc9-418e-4ffb-b321-8a32dfc0bd73" />
+
+<img width="886" height="397" alt="image" src="https://github.com/user-attachments/assets/e1dc0f23-1d3f-40ae-bed6-5ff67559da71" />
+
+<img width="663" height="626" alt="image" src="https://github.com/user-attachments/assets/ea61849f-c2e5-45fe-8495-7de24e58a7f6" />
+
 
 ## License
 
