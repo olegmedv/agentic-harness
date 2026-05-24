@@ -101,6 +101,8 @@ Delete the French course.
 
 <img width="663" height="626" alt="image" src="https://github.com/user-attachments/assets/ea61849f-c2e5-45fe-8495-7de24e58a7f6" />
 
+<img width="356" height="238" alt="image" src="https://github.com/user-attachments/assets/3ae017df-85b4-4e85-9966-d093834d3477" />
+
 
 ## License
 
